@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">Book reader Library</string>
+    <string name="grey_stripe_id">ffef3ae1-e1e6-4aba-8476-31f0ea7e5a1e</string>
+	<item type="string" name="admob_id" format="string">a14eda1c15c26ca</item>
+    
+</resources>

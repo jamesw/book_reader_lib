@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:key="PageTurnerState">
+	
+	<PreferenceCategory
+        android:title="Autoscroll settings">  		
+
+ 		<ListPreference
+     		android:key="scroll_style"
+            android:title="Autoscroll style"
+            android:summary="Rolling blind or timer"            
+        	android:defaultValue="rolling_blind"
+        	android:entries="@array/autoscrollLabels"
+        	android:entryValues="@array/autoscroll" />           
+	
+		<com.hlidskialf.android.preference.SeekBarPreference
+				android:key="scroll_speed"
+				android:title="Autoscrolling speed"
+				android:summary="How many seconds a page will be displayed."
+				android:dialogTitle="Scroll speed"								
+				android:defaultValue="60"
+				android:max="300"				
+				/>
+				
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+	    android:title="Visual settings">  		
+
+	<CheckBoxPreference			
+        android:key="full_screen"
+        android:title="Full screen"
+        android:summary="Hides all status bars."
+        android:defaultValue="false" />
+            
+    <ListPreference
+     	android:title="Screen orientation"
+        android:summary="Allows you to lock the screen orientation"
+        android:key="screen_orientation"
+        android:defaultValue="no_lock"
+        android:entries="@array/orientationLabels"
+        android:entryValues="@array/orientation" />
+            
+   <CheckBoxPreference
+		android:key="set_brightness"
+		android:title="Brightness controls"
+		android:summary="Lets PageTurner control screen brightness"
+		android:defaultValue="false"
+	/>
+   
+   <com.hlidskialf.android.preference.SeekBarPreference
+		android:key="day_bright"
+		android:title="Screen brightness"
+		android:summary="For day mode"
+		android:dialogTitle="Screen brightness"								
+		android:defaultValue="50"
+		android:max="100"
+		android:dependency="set_brightness"
+	/>   
+	
+	<com.hlidskialf.android.preference.SeekBarPreference
+		android:key="night_bright"
+		android:title="Screen brightness"
+		android:summary="For night mode"
+		android:dialogTitle="Screen brightness"								
+		android:defaultValue="50"
+		android:max="100"
+		android:dependency="set_brightness"
+	/>  
+	            
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+       android:title="Text display settings">
+                
+    <ListPreference
+   		android:key="font_face"
+        android:title="Font face"
+        android:summary="Main font for text display"            
+      	android:defaultValue="gen_book_bas"
+       	android:entries="@array/fontLabels"
+       	android:entryValues="@array/fonts" />
+                
+    <CheckBoxPreference
+		android:key="strip_whitespace"
+		android:title="Strip whitespace"
+		android:summary="Strips out unneeded blank lines."
+		android:defaultValue="true"
+	/>  		
+	
+	<com.hlidskialf.android.preference.SeekBarPreference
+		android:key="itext_size"
+		android:title="Text size"
+		android:dialogTitle="Font size"
+		android:summary="The size of the font used for displaying books."				
+		android:defaultValue="16"
+		android:max="48"
+	/>	
+				
+	<com.hlidskialf.android.preference.SeekBarPreference
+		android:key="margin_h"
+		android:title="Horizontal margins"
+		android:summary="Space on the left and right edge of the screen."
+		android:dialogTitle="Margin size"								
+		android:defaultValue="15"
+		android:max="150"				
+	/>    					
+	
+	<com.hlidskialf.android.preference.SeekBarPreference
+		android:key="margin_v"
+		android:title="Vertical margins"
+		android:summary="Space on the top and bottom edge of the screen."
+		android:dialogTitle="Margin size"								
+		android:defaultValue="15"
+		android:max="150"				
+	/>  
+	<com.hlidskialf.android.preference.SeekBarPreference
+		android:key="line_spacing"
+		android:title="Line spacing"
+		android:summary="Adds extra vertical space between lines."
+		android:dialogTitle="Line spacing"								
+		android:defaultValue="0"
+		android:max="50"				
+	/>
+	
+	</PreferenceCategory>		
+			
+	<PreferenceCategory
+        android:title="Colour settings">
+        
+       	<net.nightwhistler.pageturner.prefs.ColourChooserPref
+   			android:key="day_text"
+   			android:title="Text colour"
+   			android:summary="For day mode"
+   			android:defaultValue="-16777216" />
+    			
+   		<net.nightwhistler.pageturner.prefs.ColourChooserPref
+   			android:key="day_bg"
+   			android:title="Background colour"
+   			android:summary="For day mode"
+   			android:defaultValue="-1" />     		
+   		    		
+		<net.nightwhistler.pageturner.prefs.ColourChooserPref
+   			android:key="day_link"
+   			android:title="Link colour"
+   			android:summary="For day mode"
+   			android:defaultValue="-16776961" />  
+    		
+        <net.nightwhistler.pageturner.prefs.ColourChooserPref
+   			android:key="night_text"
+   			android:title="Text colour"
+   			android:summary="For night mode"
+   			android:defaultValue="-7829368" />
+    				
+   		<net.nightwhistler.pageturner.prefs.ColourChooserPref
+   			android:key="night_bg"
+   			android:title="Background colour"
+   			android:summary="For night mode"
+   			android:defaultValue="-16777216" />  
+    			
+   		<net.nightwhistler.pageturner.prefs.ColourChooserPref
+   			android:key="night_link"
+   			android:title="Link colour"
+   			android:summary="For night mode"
+   			android:defaultValue="-23296" />  
+    					
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:title="Animations">
+        
+        <ListPreference
+     		android:key="h_animation"
+            android:title="Horizontal animations"
+            android:summary="Horizontal page change animations"            
+        	android:defaultValue="curl"
+        	android:entries="@array/h_animLabels"
+        	android:entryValues="@array/h_anim" />
+
+         <ListPreference
+     		android:key="v_animation"
+            android:title="Vertical animations"
+            android:summary="Vertical page change animations"            
+        	android:defaultValue="slide"
+        	android:entries="@array/v_animLabels"
+        	android:entryValues="@array/v_anim" />               
+     
+    </PreferenceCategory>
+                
+	<PreferenceCategory
+        android:title="Navigation settings">
+                
+     <CheckBoxPreference			
+         android:key="scrolling"
+         android:title="Enable scrolling"
+         android:summary="Enabled browser-style scrolling"
+         android:defaultValue="false"
+         android:disableDependentsState="true" />       
+            
+     <CheckBoxPreference			
+         android:key="nav_vol"
+         android:title="Enable volume buttons"
+         android:summary="Press volume up/down to change pages."
+         android:defaultValue="false" />
+            
+     <CheckBoxPreference			
+         android:key="nav_swipe_h"
+         android:title="Enable horizontal swiping"
+         android:summary="Swipe left/right to change pages."
+         android:defaultValue="true" /> 
+            
+     <CheckBoxPreference			
+         android:key="nav_swipe_v"
+         android:title="Enable vertical swiping"
+         android:summary="Swipe up/down to change pages."
+         android:defaultValue="true" 
+         android:dependency="scrolling"/> 
+            
+     <CheckBoxPreference			
+         android:key="nav_tap_h"
+         android:title="Enable tapping sides"
+         android:summary="Tap the left/right edge of the screen to change pages."
+         android:defaultValue="true" />       
+     
+     <CheckBoxPreference			
+         android:key="nav_tap_v"
+         android:title="Enable tapping top/bottom"
+         android:summary="Tap the top/bottom edge of the screen to change pages."
+         android:defaultValue="true" />           
+                
+    </PreferenceCategory>
+    
+
+</PreferenceScreen>

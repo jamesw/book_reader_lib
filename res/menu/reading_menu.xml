@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+ 
+    <item android:id="@+id/profile_day"          
+          android:title="@string/profile_day"
+          android:icon="@drawable/sun" />
+          
+    <item android:id="@+id/profile_night"          
+          android:title="@string/profile_night"
+          android:icon="@drawable/moon" />       
+          
+    <item android:id="@+id/preferences"          
+          android:title="@string/prefs" 
+          android:icon="@drawable/cog"/>
+          
+    <item android:id="@+id/show_toc"          
+          android:title="@string/show_toc"
+          android:icon="@drawable/list" />
+
+	<item android:id="@+id/rolling_blind"          
+          android:title="@string/rolling_blind"
+          android:icon="@drawable/play" />
+          
+    <item android:id="@+id/about"          
+          android:title="@string/about"
+          android:icon="@drawable/info" />  
+               
+</menu>

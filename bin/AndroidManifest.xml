@@ -1,0 +1,40 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="uk.co.fluffypaws.mobile_apps.page_turner_reader"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
+
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	
+    <application android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
+        android:name="pageturner.BookLib"
+        android:theme="@style/AppTheme" >
+		<meta-data android:name="com.mobclix.APPLICATION_ID" android:value="8A701488-CA8B-4A83-AAE1-F9D86B1DB80C"/>
+		<activity android:name="com.mobclix.android.sdk.MobclixBrowserActivity"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+            android:name=".ReadingActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+    			<category android:name="android.intent.category.DEFAULT" />
+    			<category android:name="android.intent.category.BROWSABLE" />    			
+    			
+    			 <data android:mimeType="application/epub+zip" />
+                 <data android:pathPattern=".*\\.epub" />
+
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name="net.nightwhistler.pageturner.activity.PageTurnerPrefsActivity"
+            android:label="@string/prefs" > 
+        </activity>
+
+    </application>
+
+</manifest>
