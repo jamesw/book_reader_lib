@@ -53,7 +53,7 @@ import pageturner.Configuration.ScrollStyle;
 
 
 import roboguice.activity.RoboActivity;
-import roboguice.inject.InjectView;
+//import roboguice.inject.InjectView;
 import uk.co.fluffypaws.mobile_apps.page_turner_reader.R;
 import uk.co.fluffypaws.mobile_apps.page_turner_reader.view.AnimatedImageView;
 import uk.co.fluffypaws.mobile_apps.page_turner_reader.view.BookView;
@@ -1039,13 +1039,11 @@ public class ReadingActivity extends RoboActivity implements uk.co.fluffypaws.mo
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.reading_menu, menu);
-
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
 		hideTitleBar();
 		int itemId = item.getItemId();
 		if (itemId == R.id.profile_night){

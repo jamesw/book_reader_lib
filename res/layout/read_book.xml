@@ -8,10 +8,15 @@
 
    	<RelativeLayout
 		android:id="@+id/ad_banner"
-       	android:layout_width="fill_parent" 
-       	android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
       	android:layout_alignParentTop="@id/cont"
        	android:orientation="vertical">
+       	<TextView 
+			android:id="@+id/gs_banner_ad"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content">
+   	    </TextView>
    	</RelativeLayout>
     
 	<RelativeLayout

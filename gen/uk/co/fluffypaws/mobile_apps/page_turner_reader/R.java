@@ -78,8 +78,8 @@ public final class R {
         public static int zoom=0x7f020020;
     }
     public static final class id {
-        public static int about=0x7f0b001b;
-        public static int ad_banner=0x7f0b000b;
+        public static int about=0x7f0b001e;
+        public static int ad_banner=0x7f0b000d;
         public static int ambilwarna_cursor=0x7f0b0003;
         public static int ambilwarna_state=0x7f0b0005;
         public static int ambilwarna_target=0x7f0b0004;
@@ -88,29 +88,33 @@ public final class R {
         public static int ambilwarna_viewSatBri=0x7f0b0001;
         public static int ambilwarna_warnaBaru=0x7f0b0007;
         public static int ambilwarna_warnaLama=0x7f0b0006;
-        public static int authorField=0x7f0b0013;
-        public static int bookView=0x7f0b000e;
-        public static int btn_menu=0x7f0b0011;
-        public static int cont=0x7f0b000a;
-        public static int dummyView=0x7f0b000f;
+        public static int authorField=0x7f0b0016;
+        public static int bookView=0x7f0b0011;
+        public static int btn_menu=0x7f0b0014;
+        public static int cont=0x7f0b000c;
+        public static int deviceName=0x7f0b000a;
+        public static int dummyView=0x7f0b0012;
+        public static int gs_banner_ad=0x7f0b000e;
         public static int icon=0x7f0b0008;
-        public static int mainContainer=0x7f0b000d;
+        public static int mainContainer=0x7f0b0010;
         public static int menuText=0x7f0b0009;
-        public static int myTitleBarLayout=0x7f0b0010;
-        public static int myTitleBarTextView=0x7f0b0012;
-        public static int percentageField=0x7f0b0014;
-        public static int preferences=0x7f0b0018;
-        public static int profile_day=0x7f0b0016;
-        public static int profile_night=0x7f0b0017;
-        public static int rel=0x7f0b000c;
-        public static int rolling_blind=0x7f0b001a;
-        public static int show_toc=0x7f0b0019;
-        public static int titleProgress=0x7f0b0015;
+        public static int myTitleBarLayout=0x7f0b0013;
+        public static int myTitleBarTextView=0x7f0b0015;
+        public static int percentageField=0x7f0b0017;
+        public static int preferences=0x7f0b001b;
+        public static int profile_day=0x7f0b0019;
+        public static int profile_night=0x7f0b001a;
+        public static int rel=0x7f0b000f;
+        public static int rolling_blind=0x7f0b001d;
+        public static int show_toc=0x7f0b001c;
+        public static int timeStamp=0x7f0b000b;
+        public static int titleProgress=0x7f0b0018;
     }
     public static final class layout {
         public static int ambilwarna_dialog=0x7f030000;
         public static int menu_row=0x7f030001;
-        public static int read_book=0x7f030002;
+        public static int progress_row=0x7f030002;
+        public static int read_book=0x7f030003;
     }
     public static final class menu {
         public static int reading_menu=0x7f0a0000;
