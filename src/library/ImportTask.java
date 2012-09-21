@@ -12,7 +12,7 @@ import nl.siegmann.epublib.service.MediatypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import uk.co.fluffypaws.mobile_apps.page_turner_reader.R;
+import uk.co.pjmobile.mobile_apps.page_turner_reader.R;
 
 import android.content.Context;
 import android.content.DialogInterface;

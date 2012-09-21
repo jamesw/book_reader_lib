@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="uk.co.fluffypaws.mobile_apps.page_turner_reader"
+    package="uk.co.pjmobile.mobile_apps.page_turner_reader"
     android:versionCode="1"
     android:versionName="1.0">
 

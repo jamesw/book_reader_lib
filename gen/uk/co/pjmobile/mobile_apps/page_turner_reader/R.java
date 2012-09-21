@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package uk.co.fluffypaws.mobile_apps.page_turner_reader;
+package uk.co.pjmobile.mobile_apps.page_turner_reader;
 
 public final class R {
     public static final class array {

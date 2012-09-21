@@ -54,10 +54,10 @@ import pageturner.Configuration.ScrollStyle;
 
 import roboguice.activity.RoboActivity;
 //import roboguice.inject.InjectView;
-import uk.co.fluffypaws.mobile_apps.page_turner_reader.R;
 import uk.co.fluffypaws.mobile_apps.page_turner_reader.view.AnimatedImageView;
 import uk.co.fluffypaws.mobile_apps.page_turner_reader.view.BookView;
 import uk.co.fluffypaws.mobile_apps.page_turner_reader.view.NavGestureDetector;
+import uk.co.pjmobile.mobile_apps.page_turner_reader.R;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;

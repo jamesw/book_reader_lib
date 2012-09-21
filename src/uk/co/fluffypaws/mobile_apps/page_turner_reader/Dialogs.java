@@ -18,7 +18,7 @@
  */
 package uk.co.fluffypaws.mobile_apps.page_turner_reader;
 
-import uk.co.fluffypaws.mobile_apps.page_turner_reader.R;
+import uk.co.pjmobile.mobile_apps.page_turner_reader.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
