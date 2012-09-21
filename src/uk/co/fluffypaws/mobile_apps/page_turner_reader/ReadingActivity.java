@@ -220,7 +220,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.fluffypaws.mo
 
 		this.gestureListener = new View.OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
-				return gestureDetector.onTouchEvent(event);
+	         return gestureDetector.onTouchEvent(event);
 			}
 		};
 

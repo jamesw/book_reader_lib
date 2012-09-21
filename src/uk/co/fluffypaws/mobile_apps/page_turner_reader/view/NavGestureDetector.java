@@ -78,7 +78,7 @@ public class NavGestureDetector extends GestureDetector.SimpleOnGestureListener 
 	@Override
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
 			float distanceY) {
-
+        try{
 		float scrollUnitSize = SCROLL_FACTOR * metrics.density;
 
 		final int TAP_RANGE_H = bookView.getWidth() / 5;
@@ -91,8 +91,11 @@ public class NavGestureDetector extends GestureDetector.SimpleOnGestureListener 
 
 			return this.bookViewListener.onRightEdgeSlide(level);
 		}
-
+        }catch (java.lang.NullPointerException e) {
+			// TODO: handle exception
+		}
 		return super.onScroll(e1, e2, distanceX, distanceY);
+		
 	}
 
 	@Override
