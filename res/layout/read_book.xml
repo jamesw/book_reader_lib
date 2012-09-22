@@ -32,13 +32,13 @@
 	    	android:layout_height="fill_parent"    
 	    	android:orientation="vertical">
                 
-	        <uk.co.fluffypaws.mobile_apps.page_turner_reader.view.BookView 
+	        <uk.co.pjmobile.mobile_apps.page_turner_reader.view.BookView 
 	            android:id="@+id/bookView"
 	        	android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
 		        />
 	     
-		    <uk.co.fluffypaws.mobile_apps.page_turner_reader.view.AnimatedImageView
+		    <uk.co.pjmobile.mobile_apps.page_turner_reader.view.AnimatedImageView
 	    	     android:layout_width="fill_parent"
 	        	android:layout_height="fill_parent" 
 	        	android:id="@+id/dummyView" />
