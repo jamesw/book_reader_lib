@@ -590,7 +590,7 @@ public class BookView extends ScrollView {
 						.getCompleteHref())));
 			}
 
-//			flatten(ref.getChildren(), entries, level + 1);
+			flatten(ref.getChildren(), entries, level + 1);
 		}
 	}
 
