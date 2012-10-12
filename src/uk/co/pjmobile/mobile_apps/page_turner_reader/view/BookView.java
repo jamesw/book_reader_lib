@@ -21,6 +21,7 @@ package uk.co.pjmobile.mobile_apps.page_turner_reader.view;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 //import java.net.URI;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -477,8 +478,14 @@ public class BookView extends ScrollView {
 		this.prevPos = this.getPosition();
 
 		// URLDecode the href, so it does not contain %20 etc.
-		String href = URLDecoder.decode(StringUtil.substringBefore(rawHref,
-				Constants.FRAGMENT_SEPARATOR_CHAR));
+		String href = "";
+		try {
+			href = URLDecoder.decode(StringUtil.substringBefore(rawHref,
+					Constants.FRAGMENT_SEPARATOR_CHAR), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// Don't decode the anchor.
 		String anchor = StringUtil.substringAfterLast(rawHref,
@@ -579,15 +586,15 @@ public class BookView extends ScrollView {
 
 			String title = "";
 
-			for (int i = 0; i < level; i++) {
-				title += "-";
-			}
+//			for (int i = 0; i < level; i++) {
+//				title += "-";
+//			}
 
 			title += ref.getTitle();
 
 			if (ref.getResource() != null) {
 				entries.add(new TocEntry(title, spine.resolveTocHref(ref
-						.getCompleteHref())));
+						.getCompleteHref()), level));
 			}
 
 			flatten(ref.getChildren(), entries, level + 1);
@@ -847,10 +854,12 @@ public class BookView extends ScrollView {
 	public static class TocEntry {
 		private String title;
 		private String href;
+		private int level;
 
-		public TocEntry(String title, String href) {
+		public TocEntry(String title, String href, int level) {
 			this.title = title;
 			this.href = href;
+			this.level = level;
 		}
 
 		public String getHref() {
@@ -859,6 +868,10 @@ public class BookView extends ScrollView {
 
 		public String getTitle() {
 			return title;
+		}
+		
+		public int getLevel() {
+			return level;
 		}
 	}
 

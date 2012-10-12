@@ -24,6 +24,8 @@ import java.util.List;
 
 import library.LibraryService;
 
+//import library.LibraryService;
+
 import net.nightwhistler.htmlspanner.HtmlSpanner;
 //import net.nightwhistler.pageturner.Configuration.AnimationStyle;
 //import net.nightwhistler.pageturner.Configuration.ColourProfile;
@@ -50,8 +52,7 @@ import pageturner.Configuration;
 import pageturner.Configuration.AnimationStyle;
 import pageturner.Configuration.ColourProfile;
 import pageturner.Configuration.ScrollStyle;
-
-
+import pageturner.Util;
 import roboguice.activity.RoboActivity;
 //import roboguice.inject.InjectView;
 import uk.co.pjmobile.mobile_apps.page_turner_reader.R;
@@ -74,6 +75,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.support.v4.app.FragmentActivity;
 import android.text.SpannedString;
 import android.util.DisplayMetrics;
 import android.view.ContextMenu;
@@ -81,12 +83,14 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -137,7 +141,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 	private ViewSwitcher viewSwitcher;
 
 //	@InjectView(R.id.bookView)
-	private BookView bookView;
+	public static BookView bookView;
 
 //	@InjectView(R.id.myTitleBarTextView)
 	private TextView titleBar;
@@ -158,7 +162,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 	private AnimatedImageView dummyView;
 
 	private ProgressDialog waitDialog;
-	private AlertDialog tocDialog;
+//	private AlertDialog tocDialog;
 
 	private GestureDetector gestureDetector;
 	private View.OnTouchListener gestureListener;
@@ -250,10 +254,11 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 				});
 
 		this.viewSwitcher.setOnTouchListener(gestureListener);
-		this.bookView.setOnTouchListener(gestureListener);
+		bookView.setOnTouchListener(gestureListener);
 
-		this.bookView.addListener(this);
-		this.bookView.setSpanner(getInjector().getInstance(HtmlSpanner.class));
+		bookView.addListener(this);
+		bookView.setSpanner(getInjector().getInstance(HtmlSpanner.class));
+//		this.bookView.setSpanner(new HtmlSpanner());
 
 		this.oldBrightness = config.isBrightnessControlEnabled();
 		this.oldStripWhiteSpace = config.isStripWhiteSpaceEnabled();
@@ -289,7 +294,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 				bookView.restore();
 //			}
 		}
-
+		
 	}
 
 	private void setupConstants(){
@@ -316,6 +321,11 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 
 //		@InjectView(R.id.dummyView)
 		dummyView = (AnimatedImageView) findViewById(R.id.dummyView);
+		
+//		config = new Configuration(this);
+//		@Inject
+//		private LibraryService libraryService;
+//		this.libraryService = LibraryService.
 	}
 	
 	private void updateFileName(Bundle savedInstanceState, String fileName) {
@@ -330,9 +340,9 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 			lastIndex = savedInstanceState.getInt(IDX_KEY, -1);
 		}
 
-		this.bookView.setFileName(fileName);
-		this.bookView.setPosition(lastPos);
-		this.bookView.setIndex(lastIndex);
+		bookView.setFileName(fileName);
+		bookView.setPosition(lastPos);
+		bookView.setIndex(lastIndex);
 
 		config.setLastOpenedFile(fileName);
 	}
@@ -343,7 +353,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 	 * 
 	 * @param textSize
 	 */
-	private void updateTextSize(final float textSize) {
+/**	private void updateTextSize(final float textSize) {
 		bookView.setTextSize(textSize);
 		backgroundHandler.post(new Runnable() {
 
@@ -352,7 +362,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 				config.setTextSize((int) textSize);
 			}
 		});
-	}
+	}**/
 
 	@Override
 	public void progressUpdate(int progressPercentage) {
@@ -378,7 +388,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 		int marginH = config.getHorizontalMargin();
 		int marginV = config.getVerticalMargin();
 
-		this.bookView.setFontFamily(config.getFontFamily());
+		bookView.setFontFamily(config.getFontFamily());
 
 		bookView.setHorizontalMargin(marginH);
 		bookView.setVerticalMargin(marginV);
@@ -559,10 +569,10 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 
 	private void restoreColorProfile() {
 
-		this.bookView.setBackgroundColor(config.getBackgroundColor());
+		bookView.setBackgroundColor(config.getBackgroundColor());
 		this.viewSwitcher.setBackgroundColor(config.getBackgroundColor());
-		this.bookView.setTextColor(config.getTextColor());
-		this.bookView.setLinkColor(config.getLinkColor());
+		bookView.setTextColor(config.getTextColor());
+		bookView.setLinkColor(config.getLinkColor());
 
 		int brightness = config.getBrightNess();
 
@@ -945,9 +955,9 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
-		if (this.tocDialog == null) {
-			initTocDialog();
-		}
+//		if (this.tocDialog == null) {
+//			initTocDialog();
+//		}
 
 		MenuItem nightMode = menu.findItem(R.id.profile_night);
 		MenuItem dayMode = menu.findItem(R.id.profile_day);
@@ -955,7 +965,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 		MenuItem showToc = menu.findItem(R.id.show_toc);
 //		MenuItem sync = menu.findItem(R.id.manual_sync);
 
-		showToc.setEnabled(this.tocDialog != null);
+		showToc.setEnabled(true);
 //		sync.setEnabled(config.isSyncEnabled());
 
 		if (config.getColourProfile() == ColourProfile.DAY) {
@@ -997,6 +1007,12 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+	    if (resultCode == RESULT_OK && requestCode == 1) {
+	        if (data.hasExtra("result")) {
+	        	this.waitDialog.show();
+	            bookView.navigateTo(data.getExtras().getString("result"));
+	        }
+	    }
 
 		if (resultCode == RESULT_OK && data != null) {
 			// obtain the filename
@@ -1012,7 +1028,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 
 	private void loadNewBook(String fileName) {
 		setTitle(R.string.app_name);
-		this.tocDialog = null;
+//		this.tocDialog = null;
 		this.bookTitle = null;
 		this.titleBase = null;
 
@@ -1026,10 +1042,10 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 	protected void onStop() {
 		super.onStop();
 
-		if (this.bookView != null) {
+		if (bookView != null) {
 
-			config.setLastPosition(this.fileName, this.bookView.getPosition());
-			config.setLastIndex(this.fileName, this.bookView.getIndex());
+			config.setLastPosition(this.fileName, bookView.getPosition());
+			config.setLastIndex(this.fileName, bookView.getIndex());
 		}
 
 		this.waitDialog.dismiss();
@@ -1063,7 +1079,9 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 			startActivity(i);
 			return true;
 		}else if (itemId == R.id.show_toc){
-			this.tocDialog.show();
+			Intent intent = new Intent(this, TocActivity.class);
+			startActivityForResult(intent, 1);
+//			this.tocDialog.show();
 			return true;
 		}else if (itemId == R.id.rolling_blind){
 			startAutoScroll();
@@ -1277,7 +1295,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 		openContextMenu(bookView);
 	}
 
-	private void launchFileManager() {
+/**	private void launchFileManager() {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("file/*");
 
@@ -1290,7 +1308,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 			Toast.makeText(this, getString(R.string.install_oi),
 					Toast.LENGTH_SHORT).show();
 		}
-	}
+	}**/
 
 /**	private void launchLibrary() {
 		Intent intent = new Intent(this, LibraryActivity.class);
@@ -1310,8 +1328,8 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 		dialog.setOwnerActivity(this);
 		dialog.show();
 	}**/
-
-	private void initTocDialog() {
+	
+/**	private void initTocDialog() {
 
 		if (this.tocDialog != null) {
 			return;
@@ -1341,14 +1359,14 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 
 		this.tocDialog = builder.create();
 		this.tocDialog.setOwnerActivity(this);
-	}
+	}**/
 
 	@Override
 	protected void onSaveInstanceState(final Bundle outState) {
-		if (this.bookView != null) {
+		if (bookView != null) {
 
-			outState.putInt(POS_KEY, this.bookView.getPosition());
-			outState.putInt(IDX_KEY, this.bookView.getIndex());
+			outState.putInt(POS_KEY, bookView.getPosition());
+			outState.putInt(IDX_KEY, bookView.getIndex());
 
 			libraryService.updateReadingProgress(fileName, progressPercentage);
 			libraryService.close();

@@ -34,7 +34,11 @@
             android:name="net.nightwhistler.pageturner.activity.PageTurnerPrefsActivity"
             android:label="@string/prefs" > 
         </activity>
-
+        <activity 
+            android:name=".TocActivity"
+            android:label="@string/prefs" > 
+        </activity>
+        
     </application>
 
 </manifest>
