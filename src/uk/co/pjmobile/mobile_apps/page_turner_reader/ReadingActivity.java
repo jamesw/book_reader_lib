@@ -914,7 +914,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 
 			bookView.pageDown();
 		}
-
+		onPageChange();
 	}
 
 	private void pageUp(Orientation o) {
@@ -949,6 +949,7 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 			}
 
 			bookView.pageUp();
+			onPageChange();
 		}
 	}
 
@@ -1489,4 +1490,8 @@ public class ReadingActivity extends RoboActivity implements uk.co.pjmobile.mobi
 			bookView.restore();
 		}
 	}**/
+	
+	public void onPageChange(){
+		
+	}
 }
